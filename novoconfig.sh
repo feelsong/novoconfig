@@ -57,6 +57,6 @@ if [ ! -f ~/.novo-bitcoin/bin/cfg.json ]; then
 fi
 echo "#!/usr/bin/env bash"$'\n'"~/.novo-bitcoin/bin/novobitcoind --printtoconsole &"$'\n'"nbsvid=\"\$!\""$'\n'\
 "~/.novo-bitcoin/bin/novominer -c ~/.novo-bitcoin/bin/cfg.json"$'\n'\
-"kill \"\$nbsvid\""$'\n'"echo \"shutting down\" > ~/.novo-bitcoin/nbsv.sh
+"kill \"\$nbsvid\""$'\n'"echo \"shutting down\" > ~/.novo-bitcoin/nbsv.sh"
 chmod +x ~/.novo-bitcoin/nbsv.sh
 echo "to run novobitcoin and miner at the same time, go to ~/.novo-bitcoin and run nbsv.sh -- ie ./nbsv.sh"
