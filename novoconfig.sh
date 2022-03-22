@@ -25,7 +25,7 @@ if [ ! -d  ~/.novo-bitcoin/bin ]; then mkdir ~/.novo-bitcoin/bin; fi
 cp ~/.novo-bitcoin/downloads/novo-bitcoin-0.1.0/bin/* ~/.novo-bitcoin/bin/
 cp ~/.novo-bitcoin/downloads/novominer/bin/* ~/.novo-bitcoin/bin/
 
-read -p "press s to send the mined tokens to a supplied address, j to generate a keypair with bsv-js (not a novo-bitcoin generated address! idk!), or N to leave blank and edit cfg.json later"$'\n>' sjn
+read -p "press s to send the mined tokens to a supplied address, j to generate a keypair with bsv-js (not a novo-bitcoin generated address! works if code for addresses remains the same I guess), or N to leave blank and edit cfg.json later"$'\n>' sjn
 case $sjn in
     [Ss]* ) read -r -p "what address to send the mined tokens to?" miningAddress
             ;;
