@@ -24,7 +24,6 @@ tar -xzf ~/.novo-bitcoin/downloads/novominer-0.1.0-x86_64-linux-gnu.tar.gz -C ~/
 if [ ! -d  ~/.novo-bitcoin/bin ]; then mkdir ~/.novo-bitcoin/bin; fi
 cp ~/.novo-bitcoin/downloads/novo-bitcoin-0.1.0/bin/* ~/.novo-bitcoin/bin/
 cp ~/.novo-bitcoin/downloads/novominer/bin/* ~/.novo-bitcoin/bin/
-#miningAddress=$(~/.novo-bitcoin/bin/novobitcoin-cli getnewaddress)
 
 read -p "press s to send the mined tokens to a supplied address, j to generate a keypair with bsv-js, or N to leave blank"$'\n>' sjn
 case $sjn in
