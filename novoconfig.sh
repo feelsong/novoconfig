@@ -25,7 +25,7 @@ if [ ! -d  ~/.novo-bitcoin/bin ]; then mkdir ~/.novo-bitcoin/bin; fi
 cp ~/.novo-bitcoin/downloads/novo-bitcoin-0.1.0/bin/* ~/.novo-bitcoin/bin/
 cp ~/.novo-bitcoin/downloads/novominer/bin/* ~/.novo-bitcoin/bin/
 
-read -p "press s to send the mined tokens to a supplied address, j to generate a keypair with bsv-js, or N to leave blank"$'\n>' sjn
+read -p "press s to send the mined tokens to a supplied address, j to generate a keypair with bsv-js, or N to leave blank and edit cfg.json later"$'\n>' sjn
 case $sjn in
     [Ss]* ) read -r -p "what address to send the mined tokens to?" miningAddress
             ;;
@@ -45,7 +45,7 @@ case $sjn in
                 miningAddress=$(awk 'END{ print $1 }'<~/.novo-bitcoin/bin/miningAddress.txt)
             ;;
     [Nn]* ) break;;
-    * ) echo "Please give an address after selecting s, or generate an address using j, or configure later in cfg.json by choosing n";;
+    * ) echo "Please give an address after selecting s, or generate an address using j, or configure later in ~/.novo-bitcoin/bin/cfg.json by choosing n";;
 esac
 
 read -r -p "how many CPU threads to mine with?"$'\n>' threads
@@ -56,7 +56,7 @@ if [ ! -f ~/.novo-bitcoin/bin/cfg.json ]; then
                 > ~/.novo-bitcoin/bin/cfg.json
 fi
 echo "#!/usr/bin/env bash"$'\n'"~/.novo-bitcoin/bin/novobitcoind --printtoconsole &"$'\n'"nbsvid=\"\$!\""$'\n'\
-"xtermid=\"\$!\""$'\n'"~/.novo-bitcoin/bin/novominer -c ~/.novo-bitcoin/bin/cfg.json"$'\n'\
-"kill \"\$nbsvid\""$'\n'"echo \"shutting down\""$'\n'"sleep 20"$'\n'"kill \"\$xtermid\"" > ~/.novo-bitcoin/nbsv.sh
+"~/.novo-bitcoin/bin/novominer -c ~/.novo-bitcoin/bin/cfg.json"$'\n'\
+"kill \"\$nbsvid\""$'\n'"echo \"shutting down\" > ~/.novo-bitcoin/nbsv.sh
 chmod +x ~/.novo-bitcoin/nbsv.sh
-echo "to run novobitcoin, go to ~/.novo-bitcoin and run nbsv.sh -- ie ./nbsv.sh"
+echo "to run novobitcoin and miner at the same time, go to ~/.novo-bitcoin and run nbsv.sh -- ie ./nbsv.sh"
