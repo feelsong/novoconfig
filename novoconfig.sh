@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+if [ ! $(command -v npm) ]; then echo "install nodejs"; exit 0; fi
 echo "installing and configuring novobitcoin..."
 echo "use at your own risk in an isolated environment"
 echo "press Ctrl+C to abort"
@@ -29,10 +30,7 @@ read -p "press s to send the mined tokens to a supplied address, j to generate a
 case $sjn in
     [Ss]* ) read -r -p "what address to send the mined tokens to?" miningAddress
             ;;
-    [Jj]* ) if [ ! $(command -v npm) ]; then
-                echo "install nodejs"; exit 0
-            fi
-            if [ ! -d node_modules/bsv/ ]; then
+    [Jj]* ) if [ ! -d node_modules/bsv/ ]; then
                 npm i --prefix "$(pwd)" bsv --save
             fi
             if [ "$(npm list bsv | awk NR==2 | tr -dc '0-9' | cut -c 1)" == "2" ];then
