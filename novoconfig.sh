@@ -44,7 +44,7 @@ case $sjn in
                 echo "var bsv = require('bsv'); var privateKey = bsv.$vkey.fromRandom(); var publicKey = bsv.$pkey.from$vkey(privateKey); console.log(bsv.Address.from$pkey(publicKey).toString(),privateKey.toString())" | node | tee -a ~/.novo-bitcoin/bin/miningAddress.txt
                 miningAddress=$(awk 'END{ print $1 }'<~/.novo-bitcoin/bin/miningAddress.txt)
             ;;
-    [Nn]* ) break;;
+    [Nn]* ) ;;
     * ) echo "Please give an address after selecting s, or generate an address using j, or configure later in ~/.novo-bitcoin/bin/cfg.json by choosing n";;
 esac
 
