@@ -10,7 +10,7 @@ wget https://raw.githubusercontent.com/bitsko/novoconfig/main/novoconfig.sh && c
 
 ./novoconfig.sh
 
-cd .novo-bitcoin
+cd ~/.novo-bitcoin
 
 ./nbsv.sh
 
