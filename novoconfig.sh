@@ -5,8 +5,8 @@ echo "use at your own risk in an isolated environment"
 echo "press Ctrl+C to abort"
 sleep 5
 
-read -r -p "enter a username for novobitcoind"$'\n>' username
-read -r -p "enter a rpc password for novobitcoind"$'\n>' rpcpassword
+IFS= read -r -p "enter a username for novobitcoind"$'\n>' username
+IFS= read -r -p "enter a rpc password for novobitcoind"$'\n>' rpcpassword
 read -r -p "how many CPU threads to mine with?"$'\n>' threads
 
 if [ ! -d ~/.novo-bitcoin ]; then mkdir ~/.novo-bitcoin; fi
