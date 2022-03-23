@@ -18,3 +18,7 @@ cd .novo-bitcoin
 
 if you dont need a key generated and dont have npm, 
 delete the second line of novoconfig.sh "if [ ! $(command -v npm) ]; then echo "install nodejs"; exit 0; fi".
+
+addresses generated with bsvjs can be imported into the novobitcoin wallet by running
+./novobitcoin-cli importprivkey your_private_key_here
+and the private key generated can be found in the ~/.novo-bitcoin/bin folder.
