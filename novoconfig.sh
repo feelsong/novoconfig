@@ -15,7 +15,7 @@ if [ ! -d ~/.novo-bitcoin/downloads ]; then mkdir ~/.novo-bitcoin/downloads; fi
 
 read -p "press s to send the mined tokens to a supplied address, j to generate a keypair with bsv-js (not a novo-bitcoin generated address! works if code for addresses remains the same I guess), or N to leave blank and edit cfg.json later"$'\n>' sjn
 case $sjn in
-    [Ss]* ) IFS=' 'read -r -p "what address to send the mined tokens to?" whataddress
+    [Ss]* ) read -r -p "what address to send the mined tokens to?" whataddress
             miningAddress=$whataddress
             ;;
     [Jj]* ) if [ ! $(command -v npm) ]; then echo "install npm"; exit 0; fi
