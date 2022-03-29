@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-if [[ -z $(command -v jq) ]]; then echo "install jq"; exit 1; fi
 blocksfound=0
 ./novobitcoin-cli getwalletinfo
 while true; do
@@ -13,14 +11,14 @@ while true; do
         if [[ "$balance1" != "$balance2" ]]; then
                 blocksfound=$((blocksfound+1))
                 echo $'\n'"YOU FOUND A BLOCK!!! $blocksfound OF THEM SO FAR!!!"$'\n'
-                ./novobitcoin-cli getwalletinfo
+                echo "        immature balance is now: $balance2         "
         fi
         if [[ "$unbalance1" != "$unbalance2" ]]; then
                 echo $'\n'"**********unconfirmed balance has changed!!!*******"$'\n'
-                ./novobitcoin-cli getwalletinfo
+                echo "       unconfirmed balance is now: $unbalance2     "
         fi
         if [[ "$wbalance1" != "$wbalance2" ]]; then
                 echo $'\n'"*********wallet balance has changed!!!*************"$'\n'
-                ./novobitcoin-cli getwalletinfo
+                echo "         wallet balance is now: $wbalance2         "
         fi
 done
