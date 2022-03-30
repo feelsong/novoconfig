@@ -59,7 +59,7 @@ if [ ! -f "$runScript" ]; then
         chmod +x "$runScript"; fi
 if [ ! -f "$quietScript" ]; then
         echo "#!/usr/bin/env bash"$'\n'"$novoBin/novobitcoind &"$'\n'"nbsvid=\"\$!\""$'\n'\
-        "$novoBin/novominer -c $novoBin/cfg.json"$'\n'"nminrid=\"\$!\""$'\n' > "$quietScript"
+        "$novoBin/novominer -q -c $novoBin/cfg.json"$'\n'"nminrid=\"\$!\""$'\n' > "$quietScript"
         chmod +x "$quietScript"; fi
 if [ ! -f "$novoDL"/"$nodeDL" ]; then wget "$gitUrl"/v"$vrs"/"$nodeDL" -P "$novoDL"; fi
 if [ ! -f "$novoDL"/"$minerDL" ]; then wget "$gitUrl"/v"$vrs"/"$minerDL" -P "$novoDL"; fi
