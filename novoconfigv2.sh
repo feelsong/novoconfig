@@ -12,20 +12,20 @@ index=0
 if [[ "$1" == "index" ]] || [[ "$2" == "index" ]]; then index=1; fi
 #version of binary
 vrs="0.1.0"
-novoDir="~/.novo-bitcoin"
-novoBin="~/.novo-bitcoin/bin"
+novoDir="$HOME/.novo-bitcoin"
+novoBin="$HOME/.novo-bitcoin/bin"
 novoDL="$novoBin/dl"
 runScript="$novoBin/nbsv.sh"
 quietScript="$novoBin/nbsvq.sh"
 minerConf="$novoBin/cfg.json"
-novoConf="~/.novo-bitcoin/novo.conf"
+novoConf="$HOME/.novo-bitcoin/novo.conf"
 bsvAddy="miningAddress.txt"
 minerDL="novominer-$vrs-x86_64-linux-gnu.tar.gz"
 nodeDL="novo-bitcoin-$vrs-x86_64-linux-gnu.tar.gz"
 gitUrl="https://github.com/novobitcoin/novobitcoin-release/releases/download"
-if [ ! -d "$novoDir" ]; then mkdir "$novoDir"; fi
-if [ ! -d "$novoBin" ]; then mkdir "$novoBin"; fi
-if [ ! -d "$novoDL" ]; then mkdir "$novoDL"; fi
+if [[ ! -d "$novoDir" ]]; then mkdir -p "$novoDir"; fi
+if [[ ! -d "$novoBin" ]]; then mkdir -p "$novoBin"; fi
+if [[ ! -d "$novoDL" ]]; then mkdir -p "$novoDL"; fi
 read -p "press s to give an address to mine to, j to generate a keypair with bsv-js (not a novo-bitcoin generated address! works if code for addresses remains the same I guess), or N to leave blank and edit $novoBin/cfg.json later"$'\n>' sjn
 case $sjn in
     [Ss]* ) read -r -p "what address to send the mined tokens to?" whataddress
@@ -46,7 +46,7 @@ case $sjn in
 esac
 if [ ! -f "$novoConf" ]; then
         echo "port=8666"$'\n'"rpcport=8665"$'\n'"rpcuser=$username"$'\n'"rpcpassword=$rpcpassword" > "$novoConf"
-        if [[ "$index" == 1 ]]; then echo "txindex=1" >> "$novoConf"; fi
+        if [[ "$index" == 1 ]]; then echo "txindex=1" >> "$novoConf"; fi; fi
 if [ ! -f "$minerConf" ]; then
         echo "{"$'\n'"  \"url\" : \"http://127.0.0.1:8665\","$'\n'"  \"user\" : \"$username\","$'\n'\
                 " \"pass\" : \"$rpcpassword\","$'\n'"  \"algo\" : \"sha256dt\","$'\n'\
