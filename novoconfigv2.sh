@@ -9,7 +9,7 @@ IFS= read -r -p "enter a rpc password for novobitcoind"$'\n>' rpcpassword
 IFS= read -r -p "how many CPU threads to mine with?"$'\n>' threads
 #turn tx indexing on with index as pos. param. 1 or 2
 index=0
-if [[ "$1" == "index" ]] || [[ "$2" == "index" ]]; then index=1; fi
+if [[ "$*" == *"index"* ]]; then index=1; fi
 #version of binary
 vrs="0.1.0"
 novoDir="$HOME/.novo-bitcoin"
