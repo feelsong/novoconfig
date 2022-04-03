@@ -1,3 +1,5 @@
+see https://github.com/novobitcoin/novobitcoin-release
+
 # novoconfig
 
 in an isolated environment such as a machine just for this task or a virtual machine, and at your own risk running binaries without public source code-
