@@ -2,19 +2,8 @@
 #these work with v2
 #place them in your .bash_aliases or maybe .bashrc
 #or source this file for single session use
-nwal(){
-$HOME/.novo-bitcoin/bin/novobitcoin-cli getwalletinfo
-}
-ninfo(){
-$HOME/.novo-bitcoin/bin/novobitcoin-cli getinfo
-}
-nhelp(){
-$HOME/.novo-bitcoin/bin/novobitcoin-cli help
-}
-nstart(){
-$HOME/.novo-bitcoin/bin/nbsv.sh
-}
-ncli(){
-$HOME/.novo-bitcoin/bin/novobitcoin-cli $1 $2 $3 $4 $5 $6 $7 $8 $9
-}
-
+nwal(){ $HOME/.novo-bitcoin/bin/novobitcoin-cli getwalletinfo; }
+ninfo(){ $HOME/.novo-bitcoin/bin/novobitcoin-cli getinfo; }
+nhelp(){ $HOME/.novo-bitcoin/bin/novobitcoin-cli help; }
+nstart(){ $HOME/.novo-bitcoin/bin/nbsv.sh; }
+ncli(){ $HOME/.novo-bitcoin/bin/novobitcoin-cli $1 $2 $3 $4 $5 $6 $7 $8 $9; }
