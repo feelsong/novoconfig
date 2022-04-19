@@ -1,6 +1,6 @@
 see https://github.com/novobitcoin/novobitcoin-release
 
-requires libjansson-dev, libjansson4 for ubuntu
+requires libcurl4, libjansson4 for ubuntu miner
 
 # novoconfig
 
