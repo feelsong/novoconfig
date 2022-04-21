@@ -48,7 +48,7 @@ cp "$novoDL"/novominer/bin/* "$novoBin"/
 rm -r "$novoDL"
 
 echo "to run novobitcoin and miner at the same time"
-"$runScript"
+
 #echo "or $quietScript"
 echo "nwal(){ \$HOME/.novo-bitcoin/bin/novobitcoin-cli getwalletinfo; }" >> ~/.bash_aliases
 echo "ninfo(){ \$HOME/.novo-bitcoin/bin/novobitcoin-cli getinfo; }" >> ~/.bash_aliases
@@ -56,4 +56,6 @@ echo "nhelp(){ \$HOME/.novo-bitcoin/bin/novobitcoin-cli help; }" >> ~/.bash_alia
 echo "nstart(){ \$HOME/.novo-bitcoin/bin/nbsv.sh; }" >> ~/.bash_aliases
 echo "ncli(){ \$HOME/.novo-bitcoin/bin/novobitcoin-cli \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9; }" >> ~/.bash_aliases
 echo "update() { sudo apt update && sudo apt upgrade -y; }" >> ~/.bash_aliases
-source ~/.bash_aliases
+echo "source ~/.bash_aliases or restart to use aliases"
+
+"$runScript"
