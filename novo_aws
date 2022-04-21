@@ -1,0 +1,59 @@
+#!/bin/bash
+sudo apt update
+sudo apt upgrade -y
+sudo apt install libcurl4 libjansson4 screen
+
+#change to your address
+miningAddress=1okvk4K2itfQX6e4FnwGw5uxGpGEonovo
+
+username=<your username>
+rpcpassword=<your rpcpassword>
+threads=8
+gitUrl="https://github.com/novobitcoin/novobitcoin-release/releases/download"
+vrs="0.1.0"
+novoDir="$HOME/.novo-bitcoin"
+novoBin="$HOME/.novo-bitcoin/bin"
+novoDL="$novoBin/dl"
+runScript="$novoBin/nbsv.sh"
+quietScript="$novoBin/nbsvq.sh"
+minerConf="$novoBin/cfg.json"
+novoConf="$HOME/.novo-bitcoin/novo.conf"
+
+minerDL="novominer-$vrs-x86_64-linux-gnu.tar.gz"
+nodeDL="novo-bitcoin-$vrs-x86_64-linux-gnu.tar.gz"
+
+if [[ ! -d "$novoDir" ]]; then mkdir -p "$novoDir"; fi
+if [[ ! -d "$novoBin" ]]; then mkdir -p "$novoBin"; fi
+if [[ ! -d "$novoDL" ]]; then mkdir -p "$novoDL"; fi
+echo "port=8666"$'\n'"rpcport=8665"$'\n'"rpcuser=$username"$'\n'"rpcpassword=$rpcpassword" > "$novoConf"
+echo "{"$'\n'"  \"url\" : \"http://127.0.0.1:8665\","$'\n'"  \"user\" : \"$username\","$'\n'\
+                " \"pass\" : \"$rpcpassword\","$'\n'"  \"algo\" : \"sha256dt\","$'\n'\
+                " \"threads\" : \"$threads\","$'\n'"  \"coinbase-addr\": \"$miningAddress\""$'\n'"}" \
+                > "$minerConf"
+echo "#!/usr/bin/env bash"$'\n'"$novoBin/novobitcoind --printtoconsole &"$'\n'"nbsvid=\"\$!\""$'\n'\
+        "$novoBin/novominer -c $novoBin/cfg.json"$'\n'\
+        "kill \"\$nbsvid\""$'\n'"echo \"shutting down\"" > "$runScript"
+        chmod +x "$runScript"
+echo "#!/usr/bin/env bash"$'\n'"$novoBin/novobitcoind &"$'\n'"nbsvid=\"\$!\""$'\n'\
+        "$novoBin/novominer -q -c $novoBin/cfg.json"$'\n'"nminrid=\"\$!\""$'\n' > "$quietScript"
+        chmod +x "$quietScript"
+
+wget "$gitUrl"/v"$vrs"/"$nodeDL" -P "$novoDL"
+wget "$gitUrl"/v"$vrs"/"$minerDL" -P "$novoDL"
+
+tar -xzf "$novoDL"/"$nodeDL" -C "$novoDL"
+tar -xzf "$novoDL"/"$minerDL" -C "$novoDL"
+cp "$novoDL"/novo-bitcoin-"$vrs"/bin/* "$novoBin"/
+cp "$novoDL"/novominer/bin/* "$novoBin"/
+rm -r "$novoDL"
+
+echo "to run novobitcoin and miner at the same time"
+"$runScript"
+#echo "or $quietScript"
+echo "nwal(){ \$HOME/.novo-bitcoin/bin/novobitcoin-cli getwalletinfo; }" >> ~/.bash_aliases
+echo "ninfo(){ \$HOME/.novo-bitcoin/bin/novobitcoin-cli getinfo; }" >> ~/.bash_aliases
+echo "nhelp(){ \$HOME/.novo-bitcoin/bin/novobitcoin-cli help; }" >> ~/.bash_aliases
+echo "nstart(){ \$HOME/.novo-bitcoin/bin/nbsv.sh; }" >> ~/.bash_aliases
+echo "ncli(){ \$HOME/.novo-bitcoin/bin/novobitcoin-cli \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9; }" >> ~/.bash_aliases
+echo "update() { sudo apt update && sudo apt upgrade -y; }" >> ~/.bash_aliases
+source ~/.bash_aliases
