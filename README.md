@@ -18,7 +18,21 @@ cd ~/.novo-bitcoin
 
 ./nbsv.sh
 
+-----or
+
+
+wget https://raw.githubusercontent.com/bitsko/novoconfig/main/novoconfigv2.sh && chmod +x novoconfigv2.sh
+
+./novoconfigv2.sh
+
+cd ~/.novo-bitcoin
+
+./nbsv.sh
+
 -----
+
+
+
 
 addresses generated with bsvjs can be imported into the novobitcoin wallet by running
 ./novobitcoin-cli importprivkey your_private_key_here
