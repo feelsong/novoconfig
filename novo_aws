@@ -6,6 +6,7 @@ sudo apt install libcurl4 libjansson4 screen
 #change to your address
 miningAddress=1okvk4K2itfQX6e4FnwGw5uxGpGEonovo
 
+#change to an rpcusername and an rpc password
 username=<your username>
 rpcpassword=<your rpcpassword>
 threads=8
