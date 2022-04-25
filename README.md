@@ -14,7 +14,7 @@ wget https://raw.githubusercontent.com/bitsko/novoconfig/main/novoconfig.sh && c
 
 ./novoconfig.sh
 
-cd ~/.novo-bitcoin
+cd ~/.novo-bitcoin/bin
 
 ./nbsv.sh
 
@@ -25,7 +25,7 @@ wget https://raw.githubusercontent.com/bitsko/novoconfig/main/novoconfigv2.sh &&
 
 ./novoconfigv2.sh
 
-cd ~/.novo-bitcoin
+cd ~/.novo-bitcoin/bin
 
 ./nbsv.sh
 
