@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# DEPRECATED
 
 echo "installing and configuring novobitcoin..."
 echo "use at your own risk in an isolated environment"
