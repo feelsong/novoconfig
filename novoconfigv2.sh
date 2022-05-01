@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# in testing
+# DEPRECATED
+
 echo "downloading and configuring novobitcoin..."
 echo "use at your own risk in an isolated environment"
 echo "press Ctrl+C to abort"
