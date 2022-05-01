@@ -1,3 +1,7 @@
+# this readme file but not any other file in the folder is under the license '1200 eoy, segwit flaw, rolling iceberg, 10k in may, i will sign, i cannot sign, i signed using a pubkey, i have more money than your fucking country, i will never get a job again i will buy the institution'
+
+- A derivative of the MIT licence
+
 see https://github.com/novobitcoin/novobitcoin-release
 
 requires libcurl4, libjansson4 for ubuntu miner
