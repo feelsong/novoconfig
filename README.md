@@ -1,6 +1,8 @@
-this readme file but not any other file in the folder is protected legally under the license license.txt.md
+this readme file but not any other file in the folder is licensed under the license license.txt.md
 
 - A derivative of the MIT licence
+
+Consult with a lawyer before using anything within this repository
 
 see https://github.com/novobitcoin/novobitcoin-release
 
@@ -13,16 +15,6 @@ in an isolated environment such as a machine just for this task or a virtual mac
 and using a linux machine and bash with npm installed:
 
 -----
-
-wget https://raw.githubusercontent.com/bitsko/novoconfig/main/novoconfig.sh && chmod +x novoconfig.sh
-
-./novoconfig.sh
-
-cd ~/.novo-bitcoin/bin
-
-./nbsv.sh
-
------or
 
 
 wget https://raw.githubusercontent.com/bitsko/novoconfig/main/novoconfigv2.sh && chmod +x novoconfigv2.sh
