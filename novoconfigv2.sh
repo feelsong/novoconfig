@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # DEPRECATED
+# consult your lawyer before use
 
 echo "downloading and configuring novobitcoin..."
 echo "use at your own risk in an isolated environment"
