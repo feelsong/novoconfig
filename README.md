@@ -1,6 +1,4 @@
-this readme file but not any other file in the folder is protected legally under the license: 
-
-# '1200 eoy, segwit flaw, rolling iceberg, 10k in may, i will sign, i cannot sign, i signed using a pubkey, i have more money than your fucking country, i will never get a job again i will buy the institution'
+this readme file but not any other file in the folder is protected legally under the license license.txt.md
 
 - A derivative of the MIT licence
 
