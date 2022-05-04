@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #there is no source code for this script to work with
-#untested
+#untested 
+#missing something, doesnt work
 #consult ur lawyer
 
 #need to fill these in
