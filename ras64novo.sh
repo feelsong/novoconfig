@@ -27,7 +27,7 @@ sudo apt-get install \
 CONFIG_SITE=$PWD/depends/arm-linux-gnueabihf/share/config.site \
 	./configure --without-gui --enable-reduce-exports LDFLAGS=-static-libstdc++
 
-make -j 3
+make 
 
 echo "nwal(){ \$HOME/.novo-bitcoin/bin/novobitcoin-cli getwalletinfo; }" >> ~/.bash_aliases
 echo "ninfo(){ \$HOME/.novo-bitcoin/bin/novobitcoin-cli getinfo; }" >> ~/.bash_aliases
