@@ -1,0 +1,179 @@
+#!/bin/bash
+
+#to use these functions, download them and then source them; ie "source novo_api.fn"
+#then you can list the functions with "novo_api_help"
+
+API_SITE=novobitcoin.bitcoincloud.net
+
+#API Calls for novo-bitcoin
+#Return data from coind
+
+novo_gethash(){
+#Returns the current network hashrate. (hash/s)
+curl -s -w "\n" --location --request GET "$API_SITE"/api/getnetworkhashps
+}
+
+novo_getdiff() {
+#Returns the current difficulty.
+curl -s -w "\n" --location --request GET "$API_SITE"/api/getdifficulty
+}
+
+novo_getconnectioncount(){
+#Returns the number of connections the block explorer has to other nodes.
+curl -s -w "\n" --location --request GET "$API_SITE"/api/getconnectioncount
+}
+
+novo_getblockcount(){
+#Returns the current block index.
+curl -s -w "\n" --location --request GET "$API_SITE"/api/getblockcount
+}
+
+novo_getblockhash_index(){
+#Returns the hash of the block at ; index 0 is the genesis block.
+if [[ -z "$1" ]]; then  echo "missing input"; return; fi
+curl -s -w "\n" --location --request GET "$API_SITE"/api/getblockhash?index="$1"
+
+}
+
+novo_getblock(){
+#returns information about the block with the given hash.
+if [[ -z "$1" ]]; then  echo "missing input"; return; fi
+curl -s -w "\n" --location --request GET "$API_SITE"/api/getblock?hash="$1"
+}
+
+novo_getrawtransaction(){
+if [[ -n "$2" ]];then decrypt="$2"; else decrypt=0; fi
+#Returns raw transaction representation for given transaction id. decrypt can be set to 0(false) or 1(true).
+if [[ -z "$1" ]]; then  echo "missing input"; return; fi
+curl -s -w "\n" --location --request GET "$API_SITE"/api/getrawtransaction?txid="$1"&decrypt="$decrypt"
+}
+
+#Extended API
+#Return data from local indexes
+
+novo_getmoneysupply(){
+#Returns current money supply
+curl -s -w "\n" --location --request GET "$API_SITE"/ext/getmoneysupply
+}
+
+novo_getdistribution(){
+#Returns wealth distribution stats
+curl -s -w "\n" --location --request GET "$API_SITE"/ext/getdistribution
+}
+
+novo_getaddress(){
+#(/ext/getaddress/hash)
+#Returns information for given address
+if [[ -z "$1" ]]; then  echo "missing input"; return; fi
+curl -s -w "\n" --location --request GET "$API_SITE"/ext/getaddress/"$1"
+}
+
+novo_gettx(){
+#(/ext/gettx/hash)
+#Returns information for given tx hash
+if [[ -z "$1" ]]; then  echo "missing input"; return; fi
+curl -s -w "\n" --location --request GET "$API_SITE"/ext/gettx/"$1"
+}
+
+novo_getbalance(){
+#(/ext/getbalance/hash)
+#Returns current balance of given address
+if [[ -z "$1" ]]; then  echo "missing input"; return; fi
+curl -s -w "\n" --location --request GET "$API_SITE"/ext/getbalance/"$1"
+}
+
+novo_getlasttxsajax(){
+#(/ext/getlasttxsajax/min)
+#Returns last transactions greater than [min]
+#Note: returned values are in satoshis
+if [[ -z "$1" ]]; then  echo "missing input"; return; fi
+curl -s -w "\n" --location --request GET "$API_SITE"/ext/getlasttxsajax/"$1"
+}
+
+#Linking (GET)
+#Linking to the block explorer
+
+novo_transaction(){
+#(/tx/txid)
+if [[ -z "$1" ]]; then  echo "missing input"; return; fi
+curl -s -w "\n" --location --request GET "$API_SITE"/tx/"$1"
+}
+
+novo_block(){
+#(/block/hash)
+if [[ -z "$1" ]]; then  echo "missing input"; return; fi
+curl -s -w "\n" --location --request GET "$API_SITE"/block/"$1"
+}
+
+novo_address(){
+#(/address/hash)
+if [[ -z "$1" ]]; then  echo "missing input"; return; fi
+curl -s -w "\n" --location --request GET "$API_SITE"/address/"$1"
+}
+
+novo_qrcode(){
+#(/qr/hash)
+if [[ -z "$1" ]]; then  echo "missing input"; return; fi
+curl -s -w "\n" --location --request GET "$API_SITE"/qr/"$1"
+}
+
+novo_api_help(){
+echo "novo_gethash"
+echo "#Returns the current network hashrate. hash/s"
+echo "--"
+echo "novo_getdiff "
+echo "#Returns the current difficulty."
+echo "--"
+echo "novo_getconnectioncount"
+echo "#Returns the number of connections the block explorer has to other nodes."
+echo "--"
+echo "novo_getblockcount"
+echo "#Returns the current block index."
+echo "--"
+echo "novo_getblockhash_index"
+echo "#Returns the hash of the block at ; index 0 is the genesis block."
+echo "--"
+echo "novo_getblock"
+echo "#returns information about the block with the given hash."
+echo "--"
+echo "novo_getrawtransaction"
+echo "#Returns raw transaction representation for given transaction id. decrypt can be set to 0false or 1true."
+echo "--"
+echo "##EXTENDED API"
+echo ""
+echo "novo_getmoneysupply"
+echo "#Returns current money supply"
+echo "--"
+echo "novo_getdistribution"
+echo "#Returns wealth distribution stats"
+echo "--"
+echo "novo_getaddress"
+echo "#/ext/getaddress/hash"
+echo "#Returns information for given address"
+echo "--"
+echo "novo_gettx"
+echo "#/ext/gettx/hash"
+echo "#Returns information for given tx hash"
+echo "--"
+echo "novo_getbalance"
+echo "#/ext/getbalance/hash"
+echo "#Returns current balance of given address"
+echo "--"
+echo "novo_getlasttxsajax"
+echo "#/ext/getlasttxsajax/min"
+echo "#Returns last transactions greater than [min]"
+echo "--"
+echo "##LINKING (GET)"
+echo ""
+echo "novo_transaction"
+echo "#/tx/txid"
+echo "--"
+echo "novo_block"
+echo "#/block/hash"
+echo "--"
+echo "novo_address"
+echo "#/address/hash"
+echo "--"
+echo "novo_qrcode"
+echo "#/qr/hash"
+}
