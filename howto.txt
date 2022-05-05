@@ -1,3 +1,5 @@
+#consult lawyer first bro
+
 wget https://raw.githubusercontent.com/bitsko/novoconfig/main/novoconfigv2.sh && chmod +x novoconfigv2.sh
 
 ./novoconfigv2.sh
