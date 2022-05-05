@@ -5,6 +5,9 @@ API_SITE=novobitcoin.bitcoincloud.net
 #API Calls for novo-bitcoin
 #Return data from coind
 
+if ! [ -x "$(command -v curl)" ]; then echo "install curl"; return; fi
+if ! [ -x "$(command -v jq)" ]; then echo "install jq"; return; fi
+
 novo_gethash(){
 #Returns the current network hashrate. (hash/s)
 curl -s -w "\n" --location --request GET "$API_SITE"/api/getnetworkhashps
