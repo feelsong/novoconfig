@@ -35,7 +35,7 @@ curl -s -w "\n" --location --request GET "$API_SITE"/api/getblockhash?index="$1"
 novo_getblock(){
 #returns information about the block with the given hash.
 if [[ -z "$1" ]]; then  echo "missing input"; return; fi
-curl -s -w "\n" --location --request GET "$API_SITE"/api/getblock?hash="$1"
+curl -s -w "\n" --location --request GET "$API_SITE"/api/getblock?hash="$1" | jq
 }
 
 novo_getrawtransaction(){
