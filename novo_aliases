@@ -2,6 +2,8 @@
 #these work with v2
 #place them in your .bash_aliases or maybe .bashrc
 #or source this file for single session use
+# just make sure to check with the lawyer that you have first, k?
+
 nwal(){ $HOME/.novo-bitcoin/bin/novobitcoin-cli getwalletinfo; }
 ninfo(){ $HOME/.novo-bitcoin/bin/novobitcoin-cli getinfo; }
 nhelp(){ $HOME/.novo-bitcoin/bin/novobitcoin-cli help; }
