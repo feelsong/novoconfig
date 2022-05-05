@@ -42,7 +42,7 @@ novo_getrawtransaction(){
 if [[ -n "$2" ]];then decrypt="$2"; else decrypt=0; fi
 #Returns raw transaction representation for given transaction id. decrypt can be set to 0(false) or 1(true).
 if [[ -z "$1" ]]; then  echo "missing input"; return; fi
-curl -s -w "\n" --location --request GET "$API_SITE"/api/getrawtransaction?txid="$1"\&decrypt="$decrypt"
+curl -s -w "\n" --location --request GET "$API_SITE"/api/getrawtransaction?txid="$1"\&decrypt="$decrypt" | jq
 }
 
 #Extended API
@@ -62,14 +62,14 @@ novo_getaddress(){
 #(/ext/getaddress/hash)
 #Returns information for given address
 if [[ -z "$1" ]]; then  echo "missing input"; return; fi
-curl -s -w "\n" --location --request GET "$API_SITE"/ext/getaddress/"$1"
+curl -s -w "\n" --location --request GET "$API_SITE"/ext/getaddress/"$1" | jq
 }
 
 novo_gettx(){
 #(/ext/gettx/hash)
 #Returns information for given tx hash
 if [[ -z "$1" ]]; then  echo "missing input"; return; fi
-curl -s -w "\n" --location --request GET "$API_SITE"/ext/gettx/"$1"
+curl -s -w "\n" --location --request GET "$API_SITE"/ext/gettx/"$1" | jq
 }
 
 novo_getbalance(){
@@ -84,7 +84,7 @@ novo_getlasttxsajax(){
 #Returns last transactions greater than [min]
 #Note: returned values are in satoshis
 if [[ -z "$1" ]]; then  echo "missing input"; return; fi
-curl -s -w "\n" --location --request GET "$API_SITE"/ext/getlasttxsajax/"$1"
+curl -s -w "\n" --location --request GET "$API_SITE"/ext/getlasttxsajax/"$1" | jq
 }
 
 #Linking (GET)
@@ -99,7 +99,7 @@ curl -s -w "\n" --location --request GET "$API_SITE"/tx/"$1"
 novo_block(){
 #(/block/hash)
 if [[ -z "$1" ]]; then  echo "missing input"; return; fi
-curl -s -w "\n" --location --request GET "$API_SITE"/block/"$1"
+curl -s -w "\n" --location --request GET "$API_SITE"/block/"$1" | jq
 }
 
 novo_address(){
@@ -108,11 +108,11 @@ if [[ -z "$1" ]]; then  echo "missing input"; return; fi
 curl -s -w "\n" --location --request GET "$API_SITE"/address/"$1"
 }
 
-novo_qrcode(){
+#novo_qrcode(){
 #(/qr/hash)
-if [[ -z "$1" ]]; then  echo "missing input"; return; fi
-curl -s -w "\n" --location --request GET "$API_SITE"/qr/"$1"
-}
+#if [[ -z "$1" ]]; then  echo "missing input"; return; fi
+#curl -s -w "\n" --location --request GET "$API_SITE"/qr/"$1"
+#}
 
 novo_api_help(){
 echo "novo_gethash"
@@ -171,8 +171,8 @@ echo "--"
 echo "novo_address"
 echo "#/address/hash"
 echo "--"
-echo "novo_qrcode"
-echo "#/qr/hash"
+#echo "novo_qrcode"
+#echo "#/qr/hash"
 }
 
 novo_api_list(){
