@@ -21,7 +21,7 @@ sudo apt-get install \
 	bsdmainutils python3 libevent-dev libboost-system-dev libboost-filesystem-dev \
 	libboost-chrono-dev libboost-program-options-dev libboost-test-dev \
 	libboost-thread-dev libsqlite3-dev libqrencode-dev g++-arm-linux-gnueabihf \
-	curl libdb-dev libdb++-dev libssl-dev
+	curl libdb-dev libdb++-dev libssl-dev miniupnpc
 
 ./autogen.sh
 
