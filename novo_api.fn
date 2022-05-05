@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#to use these functions, download them and then source them; ie "source novo_api.fn"
-#then you can list the functions with "novo_api_help"
-
 API_SITE=novobitcoin.bitcoincloud.net
 
 #API Calls for novo-bitcoin
@@ -45,7 +42,7 @@ novo_getrawtransaction(){
 if [[ -n "$2" ]];then decrypt="$2"; else decrypt=0; fi
 #Returns raw transaction representation for given transaction id. decrypt can be set to 0(false) or 1(true).
 if [[ -z "$1" ]]; then  echo "missing input"; return; fi
-curl -s -w "\n" --location --request GET "$API_SITE"/api/getrawtransaction?txid="$1"&decrypt="$decrypt"
+curl -s -w "\n" --location --request GET "$API_SITE"/api/getrawtransaction?txid="$1"\&decrypt="$decrypt"
 }
 
 #Extended API
@@ -58,7 +55,7 @@ curl -s -w "\n" --location --request GET "$API_SITE"/ext/getmoneysupply
 
 novo_getdistribution(){
 #Returns wealth distribution stats
-curl -s -w "\n" --location --request GET "$API_SITE"/ext/getdistribution
+curl -s -w "\n" --location --request GET "$API_SITE"/ext/getdistribution | jq
 }
 
 novo_getaddress(){
@@ -111,11 +108,11 @@ if [[ -z "$1" ]]; then  echo "missing input"; return; fi
 curl -s -w "\n" --location --request GET "$API_SITE"/address/"$1"
 }
 
-#novo_qrcode(){
+novo_qrcode(){
 #(/qr/hash)
-#if [[ -z "$1" ]]; then  echo "missing input"; return; fi
-#curl -s -w "\n" --location --request GET "$API_SITE"/qr/"$1"
-#}
+if [[ -z "$1" ]]; then  echo "missing input"; return; fi
+curl -s -w "\n" --location --request GET "$API_SITE"/qr/"$1"
+}
 
 novo_api_help(){
 echo "novo_gethash"
@@ -174,6 +171,10 @@ echo "--"
 echo "novo_address"
 echo "#/address/hash"
 echo "--"
-#echo "novo_qrcode"
-#echo "#/qr/hash"
+echo "novo_qrcode"
+echo "#/qr/hash"
+}
+
+novo_api_list(){
+novo_api_help | grep "novo"
 }
