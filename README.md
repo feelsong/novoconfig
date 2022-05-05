@@ -1,7 +1,3 @@
-this readme file but not any other file in the folder is licensed under the license license.txt.md
-
-- A derivative of the MIT licence
-
 Consult with a lawyer before using anything within this repository
 
 see https://github.com/novobitcoin/novobitcoin-release
