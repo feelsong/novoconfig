@@ -1,4 +1,8 @@
 #!/bin/bash
+#use this file:
+# wget https://raw.githubusercontent.com/bitsko/novoconfig/main/novo_api.fn
+# source novo_api.fn
+# or . novo_api.fn
 
 API_SITE=novobitcoin.bitcoincloud.net
 
@@ -176,6 +180,8 @@ echo "#/address/hash"
 echo "--"
 #echo "novo_qrcode"
 #echo "#/qr/hash"
+echo "novo_api_list"
+echo "#returns available functions"
 }
 
 novo_api_list(){
