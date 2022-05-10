@@ -12,7 +12,7 @@ rpcpassword=
 threads=
 miningAddress=
 
-echo "raspi 64 bit debian novobitcoin compile script"
+echo "raspi 64 bit debian ubuntu manjaro novobitcoin compile script"
 
 novoDir="$HOME/.novo-bitcoin"
 novoBin="$HOME/.novo-bitcoin/bin"
